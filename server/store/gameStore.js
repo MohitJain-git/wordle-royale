@@ -38,6 +38,7 @@ class GameStore {
 
     // 2. Join an existing Room
     async joinRoom(roomId, playerId, username) {
+        if (roomId) roomId = roomId.toUpperCase();
         const roomKey = `room:${roomId}`;
         
         // Fetch current state

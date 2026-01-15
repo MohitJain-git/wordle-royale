@@ -85,7 +85,7 @@ export default function Lobby({ error, setMyUsername }) {
                         className="flex-1 p-3 bg-slate-900 border border-slate-600 rounded text-white focus:outline-none focus:border-green-500 transition-colors font-mono tracking-widest text-center uppercase"
                         placeholder="ROOM ID" 
                         value={roomId}
-                        onChange={e => setRoomId(e.target.value)}
+                        onChange={e => setRoomId(e.target.value.toUpperCase())}
                     />
                     <button 
                         onClick={handleJoin}

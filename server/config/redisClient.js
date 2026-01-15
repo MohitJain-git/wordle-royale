@@ -1,5 +1,5 @@
 // const { createClient } = require('redis');
-// require('dotenv').config();
+require('dotenv').config();
 
 const { createClient } = require('redis');
 
