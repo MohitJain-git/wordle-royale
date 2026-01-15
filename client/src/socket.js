@@ -1,4 +1,10 @@
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
 
-// Connect once and export this single instance
-export const socket = io.connect("http://localhost:3001");
+// 👇 IF we are in production (Vercel), use Render URL. ELSE use Localhost.
+const URL = import.meta.env.PROD 
+    ? 'https://wordle-server-66g3.onrender.com/' // 👈 PASTE YOUR RENDER URL HERE
+    : 'http://localhost:3001';
+
+export const socket = io(URL, {
+    autoConnect: true
+});
