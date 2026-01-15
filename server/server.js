@@ -28,9 +28,12 @@ const gameStore = require('./store/gameStore'); // Import the new store
 const app = express();
 const server = http.createServer(app);
 
-// Allow frontend to connect
+// Allow connections from anywhere (or specifically your future frontend)
 const io = new Server(server, {
-    cors: { origin: "http://localhost:5173" } // Vite default port
+    cors: { 
+        origin: "*",  // 👈 ALLOW ALL ORIGINS (Crucial for Vercel deployment)
+        methods: ["GET", "POST"]
+    } 
 });
 
 io.on('connection', (socket) => {
@@ -177,6 +180,9 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3001, () => {
-    console.log('SERVER RUNNING ON PORT 3001');
+// Use the Port Render assigns, or 3001 if local
+const PORT = process.env.PORT || 3001; 
+
+server.listen(PORT, () => {
+    console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
